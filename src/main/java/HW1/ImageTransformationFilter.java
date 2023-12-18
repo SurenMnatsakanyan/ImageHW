@@ -48,11 +48,12 @@ public class ImageTransformationFilter implements PlugInFilter {
   }
 
   public static void main(String[] args) {
-    ImagePlus ip = IJ.openImage("src/main/resources/result.png");
+    ImagePlus ip = IJ.openImage("src/main/resources/HW1/result.png");
     ImageTransformationFilter imageTransformationFilter = new ImageTransformationFilter();
     imageTransformationFilter.setup("", ip);
     imageTransformationFilter.run(ip.getProcessor());
     FileSaver fileSaver = new FileSaver(ip);
-    fileSaver.saveAsPng("src/main/resources/result-edit.png");
+    fileSaver.saveAsPng("src/main/resources/HW1/result-edit.png");
   }
+
 }
