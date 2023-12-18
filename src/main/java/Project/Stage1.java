@@ -2,11 +2,12 @@ package Project;
 
 import ij.IJ;
 import ij.ImagePlus;
-import ij.plugin.filter.Binary;
 import ij.process.ColorProcessor;
 
 import java.awt.*;
 // This class contains printed text removal on sample image, considering the tolerance level.
+
+// Algorithm first
 public class Stage1 {
 
     private static final int COLOR_DIFFERENCE_TOLERANCE = 10;
@@ -18,26 +19,14 @@ public class Stage1 {
         ImagePlus originalImage = IJ.openImage("src/main/resources/CSHandwriting/M105/OOP.MT2.240315.M105_p2.jpg");
 
         ColorProcessor processor = (ColorProcessor) originalImage.getProcessor();
-
-        applyBinaryOperation(originalImage);
-
         processor.invert();
         processor.erode();
 
         removePrintedTextAndMarks(processor);
 
-        processor.invert();
-        processor.erode();
-
         originalImage.updateAndDraw(); // To refresh the image window if it's open
         originalImage.show(); // To display the updated image
         IJ.save(originalImage, "src/main/resources/CSHandwriting/M105/");
-    }
-
-    private static void applyBinaryOperation(ImagePlus image) {
-        Binary binaryOperation = new Binary();
-        binaryOperation.setup("", image);
-        binaryOperation.run(image.getProcessor());
     }
 
     private static void removePrintedTextAndMarks(ColorProcessor processor) {
