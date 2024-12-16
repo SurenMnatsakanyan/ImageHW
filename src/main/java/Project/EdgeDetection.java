@@ -17,7 +17,7 @@ public class EdgeDetection {
 
     public static void main(String[] args) {
 
-        ImagePlus imp = IJ.openImage("src/main/resources/metaqse/TestDress17.jpg");
+        ImagePlus imp = IJ.openImage("src/main/resources/metaqse/FLORAL_IMAGES/Floral-09.jpg");
         imp.show("Original Image");
 
         final List<HSV> firstLeftHSVColors = hsvColors((ColorProcessor) imp.getProcessor(), 2, 10);
